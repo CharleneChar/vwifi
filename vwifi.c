@@ -2019,6 +2019,9 @@ static int vwifi_delete_interface(struct vwifi_vif *vif)
 /* Set transmit power for the virtual interface */
 static int vwifi_set_tx_power(struct wiphy *wiphy,
                               struct wireless_dev *wdev,
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0)
+                              int radio_idx,
+#endif
                               enum nl80211_tx_power_setting type,
                               int mbm)
 {
@@ -2064,6 +2067,9 @@ static int vwifi_set_tx_power(struct wiphy *wiphy,
 /* Get transmit power from the virtual interface */
 static int vwifi_get_tx_power(struct wiphy *wiphy,
                               struct wireless_dev *wdev,
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0)
+                              int radio_idx,
+#endif
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 14, 0)
                               unsigned int link_id,
 #endif
